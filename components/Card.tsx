@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Motion } from "./Motion";
 
 export interface ImgProp {
   id: string;
@@ -17,9 +18,25 @@ interface Prop {
   index: number;
 }
 
-function Card({ series }: Prop) {
+const variants={
+    hidden: {opacity: 0},
+    visible: {opacity: 1}
+}
+
+function Card({ series, index }: Prop) {
   return (
-    <div className="max-w-sm rounded relative w-full">
+    <Motion
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        viewport={{ amount: 0 }}
+        transition={{
+            delay: index * 0.1,
+            ease:'easeInOut',
+            duration: 0.4
+        }}
+        className="max-w-sm rounded relative w-full"
+    >
       <div className="relative w-full h-[37vh]">
         <Image
           src={`https://shikimori.one${series.image.original}`}
@@ -40,7 +57,7 @@ function Card({ series }: Prop) {
           </div>
         </div>
       </div>
-    </div>
+    </Motion>
   );
 }
 
