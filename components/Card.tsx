@@ -31,32 +31,32 @@ function Card({ series, index }: Prop) {
         animate="visible"
         viewport={{ amount: 0 }}
         transition={{
-            delay: index * 0.1,
+            delay: index * 0.04,
             ease:'easeInOut',
             duration: 0.4
         }}
-        className="max-w-sm rounded relative w-full"
+        className="max-w-sm w-full"
     >
-      <div className="relative w-full h-[37vh]">
+      <div className="relative w-full h-[50vh] rounded-md overflow-hidden">
         <Image
           src={`https://shikimori.one${series.image.original}`}
           alt={series.name}
           fill
-          className="rounded-xl"
+          className="transition duration-200 ease-in-out hover:scale-110"
         />
       </div>
-      <div className="py-4 flex flex-col gap-3">
-        <div className="flex justify-between items-center gap-1">
-          <h2 className="font-bold text-white text-xl line-clamp-1 w-full">
+
+      <div className="flex flex-col py-4 gap-4">
+        <div className="flex justify-between items-center">
+          <h2 className="bg-[#031F16] rounded-md py-1 px-2 text-[#E4DBCB] transition duration-200 ease-in-out hover:opacity-50 select-none">
             {series.name}
           </h2>
-          <div className="py-1 px-2 bg-[#161921] rounded-sm">
-            <p className="text-white text-sm font-bold capitalize">
+          <div className="bg-[#031F16] rounded-md py-1 px-2 text-[#E4DBCB] transition duration-200 ease-in-out hover:opacity-50 select-none">
               {series.kind}
-            </p>
           </div>
         </div>
       </div>
+
     </Motion>
   );
 }
